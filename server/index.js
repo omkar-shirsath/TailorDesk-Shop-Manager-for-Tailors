@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+
 
 dotenv.config();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 
 //connect the database
 connectDB();
+
+app.use("/auth",authRoutes);
 
 app.get("/",(req,res)=>{
     res.send("runing api call");
